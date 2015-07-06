@@ -1,12 +1,13 @@
-;;; ejis.el -- formatting settings for java-mode
+;;; ejis.el -- formatting settings for java-mode -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015 Łukasz Klich
 
 ;; Author: Lukasz Klich <klich.lukasz@gmail.com>
-;; Created: 05 Jul 2007
-;; Version: 0.0.1
-;; Keywords: tools, java
-;; Package-Requires: ()
+;; Created: 06 Jul 2015
+;; Version: 0.1.0
+;; Keywords: java
+;; URL: http://github.com/kleewho/ejis
+;; Package-Requires: ((dash "2.11.0"))
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -21,9 +22,15 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;;; Code
+;;; Commentary:
+
+;; emacs-java-intellij-style - configuration for java-mode to format
+;; code just like default settings in IntelliJ
+
+;;; Code:
 
 (require 'cc-mode)
+(require 'dash)
 
 (defconst ejis--intellij-java-style
   '((c-basic-offset . 4)
@@ -46,7 +53,7 @@
                         (func-decl-cont        . c-lineup-java-throws)
                         (arglist-cont-nonempty . ejis--arglist-cont-nonempty)
                         )))
-  "Intellij Java Programming Style")
+  "Intellij Java Programming Style.")
 
 (c-add-style "IntelliJ" ejis--intellij-java-style)
 
@@ -58,9 +65,8 @@
 
 (defun ejis--arglist-cont-nonempty (arg)
   (if (ejis--function-declaration? (c-langelem-pos arg))
-      (c-lineup-arglist arg))
-    (progn
-      (* 2  c-basic-offset)))
+      (c-lineup-arglist arg)
+    (* 2 c-basic-offset)))
 
 (provide 'ejis)
 ;;; ejis.el ends here
