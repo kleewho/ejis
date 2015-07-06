@@ -1,4 +1,4 @@
-;;; ejis.el -- formatting settings for java-mode -*- lexical-binding: t; -*-
+;;; ejis.el --- formatting settings for java-mode -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015 Łukasz Klich
 
@@ -36,7 +36,7 @@
   '((c-basic-offset . 4)
     (c-comment-only-line-offset . (0 . 0))
     ;; the following preserves Javadoc starter lines
-    (c-offsets-alist . ((inline-open . 0)
+    (c-offsets-alist . ((inline-open           . 0)
                         (topmost-intro-cont    . +)
                         (statement-block-intro . +)
                         (knr-argdecl-intro     . 5)
@@ -51,8 +51,7 @@
                         (access-label          . 0)
                         (inher-cont            . c-lineup-java-inher)
                         (func-decl-cont        . c-lineup-java-throws)
-                        (arglist-cont-nonempty . ejis--arglist-cont-nonempty)
-                        )))
+                        (arglist-cont-nonempty . ejis--arglist-cont-nonempty))))
   "Intellij Java Programming Style.")
 
 (c-add-style "IntelliJ" ejis--intellij-java-style)
